@@ -1,0 +1,55 @@
+:host {
+  display: block;
+  width: 320px; /* גודל קבוע של כרטיס */
+}
+
+.travel-card {
+  background: #e6f0fa; /* רקע כחול בהיר */
+  border: 1.5px solid #a3c2f1;
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%; /* ימלא את ה־host */
+  box-shadow: 0 4px 8px rgba(163, 194, 241, 0.3);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1a3d7c;
+  margin: 0 auto;
+  transition: box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+.travel-card:hover {
+  box-shadow: 0 8px 16px rgba(163, 194, 241, 0.6);
+}
+
+.travel-card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: 700;
+  color: #0f265a;
+}
+
+.travel-card p {
+  margin: 6px 0;
+  font-size: 14.5px;
+}
+
+.travel-card button {
+  background-color: #7aa7f7;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 15px;
+  margin-right: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+  margin-top: 12px;
+}
+
+.travel-card button:hover {
+  background-color: #5480d3;
+}
+
+.travel-card button:active {
+  background-color: #3b5a9d;
+}

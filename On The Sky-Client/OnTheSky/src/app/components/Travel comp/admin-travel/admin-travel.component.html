@@ -1,0 +1,14 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+
+<h2>Travel list for approval</h2>
+<div class="travel-list">
+  <app-travel-item
+    *ngFor="let travel of travels"
+    [travel]="travel"
+    (approve)="onApprove($event)"
+    (reject)="onReject($event)"
+  ></app-travel-item>
+</div>
+
+    

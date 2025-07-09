@@ -1,0 +1,51 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+
+<h2 class="title">Order a Flight</h2>
+
+<!-- טופס להזמנת טיסה -->
+<form *ngIf="flights && flights.length > 0" (ngSubmit)="selectedTravelId ? updateTravel() : submitOrder()"
+  #orderForm="ngForm" class="order-form">
+  <label for="flight">Select a flight:</label>
+  <select [(ngModel)]="travel.flightId" name="flight" required>
+    <option value="" disabled selected>Select a flight</option>
+    <option *ngFor="let flight of flights" [value]="flight.flightid">
+      {{ flight.country?.country }} - {{ flight.flighttime | date:'short' }}
+    </option>
+  </select>
+
+  <label for="amountTickets">Number of tickets:</label>
+  <input type="number" [(ngModel)]="travel.amountTickets" name="amountTickets" min="1" required />
+
+  <div class="buttons">
+    <button type="submit" [disabled]="orderForm.invalid">
+      {{ selectedTravelId ? 'Update Order' : 'Submit Order' }}
+    </button>
+    <button type="button" *ngIf="selectedTravelId" (click)="clearForm()">Cancel</button>
+  </div>
+</form>
+
+<!-- אם אין טיסות בכלל -->
+<p *ngIf="flights && flights.length === 0" class="info-message">
+  No available flights at the moment.
+</p>
+
+<hr />
+
+<h3>Existing Orders</h3>
+
+<!-- אם יש הזמנות -->
+<ul class="travel-list" *ngIf="travels && travels.length > 0">
+  <li *ngFor="let t of travels" class="travel-item">
+    <strong>Flight #{{ t.travelId }}</strong> -
+    {{ t.amountTickets }} ticket(s) to
+    {{ t.flight?.country?.country || '---' }}
+    <button (click)="selectForEdit(t)">Edit</button>
+    <button (click)="delete(t.travelId)">Delete</button>
+  </li>
+</ul>
+
+<!-- אם אין עדיין הזמנות -->
+<p *ngIf="travels && travels.length === 0" class="info-message">
+  You have no orders yet.
+</p>

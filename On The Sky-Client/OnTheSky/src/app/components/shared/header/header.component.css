@@ -1,0 +1,17 @@
+/* כותרת עליונה */
+.site-header {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* התמונה בכותרת */
+.header-image {
+  width: 100%;        /* רוחב מלא של המסך */
+  height: 120px;
+  display: block;
+}
+
+app-navbar {
+  position: relative;
+  z-index: 10;
+}

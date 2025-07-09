@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\on_the_sky.core\on_the_sky.core.csproj" />
+    <ProjectReference Include="..\on_the_sky.Data\on_the_sky.Data.csproj" />
+  </ItemGroup>
+
+</Project>

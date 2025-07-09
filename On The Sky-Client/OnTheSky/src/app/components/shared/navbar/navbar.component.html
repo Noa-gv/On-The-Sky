@@ -1,0 +1,28 @@
+<nav class="navbar">
+  <ul class="nav-links">
+    <!-- קישור להזמנת טיסה (לכל המשתמשים) -->
+    <li>
+      <a routerLink="/order-flight" routerLinkActive="active">Order Flight</a>
+    </li>
+
+    <!-- קישור לעמוד אישור נסיעות (למנהלים בלבד) -->
+    <li *ngIf="currentUser?.role === 'manager'">
+      <a routerLink="/admin-travels" routerLinkActive="active">Manage Travels</a>
+    </li>
+
+    <!-- קישור לעמוד טיסות -->
+    <li>
+      <a routerLink="/flights" routerLinkActive="active">Flights</a>
+    </li>
+
+    <!-- קישור למדינות -->
+    <li>
+      <a routerLink="/destinations" routerLinkActive="active">Country</a>
+    </li>
+  </ul>
+
+  <div class="logout-section" (click)="logout()">
+    <i class="fas fa-sign-out-alt"></i>
+    <span>Logout</span>
+  </div>
+</nav>

@@ -1,0 +1,84 @@
+.my-travels-container {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 0 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1a3d7c; 
+}
+
+.my-travels-container h2 {
+  text-align: center;
+  color: #0f265a;
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 28px;
+}
+
+.travel-card {
+  background: #e6f0fa; 
+  border: 1.5px solid #a3c2f1;
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 6px rgba(163, 194, 241, 0.3);
+  transition: box-shadow 0.3s ease;
+  position: relative;
+}
+
+.travel-card:hover {
+  box-shadow: 0 7px 14px rgba(163, 194, 241, 0.6);
+}
+
+.travel-card h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-weight: 700;
+  color: #0f265a;
+  font-size: 20px;
+}
+
+.travel-card p {
+  margin: 6px 0;
+  font-size: 15px;
+}
+
+/* טיסה שעברה */
+.travel-card .past-flight {
+  color: #d32f2f;
+  font-weight: 700;
+  font-size: 14px;
+  margin-top: 5px;
+  display: inline-block;
+  background-color: #f9d6d5;
+  padding: 4px 8px;
+  border-radius: 5px;
+}
+
+.status {
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 15px;
+  color: white;
+  text-transform: capitalize;
+}
+
+.status.approved {
+  background-color: #4caf50; 
+}
+
+.status.rejected {
+  background-color: #e74c3c; 
+}
+
+.status:not(.approved):not(.rejected) {
+  background-color: #3f51b5; 
+}
+
+.no-travels-message p {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0f265a;
+  margin: 0;
+  padding: 10px;
+  text-shadow: 1px 1px 2px rgba(163, 194, 241, 0.6);
+}

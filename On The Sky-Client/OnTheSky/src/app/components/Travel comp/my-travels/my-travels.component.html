@@ -1,0 +1,33 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+
+<!-- אם אין טיסות - תוצג הודעה -->
+<div *ngIf="travels.length === 0" class="no-travels-message">
+  <p>🛫 Start flying!</p>
+</div>
+
+<!-- אם יש טיסות - תוצג הכותרת והרשימה -->
+<div *ngIf="travels.length > 0" class="my-travels-container">
+  <h2>My Travels</h2>
+
+  <div *ngFor="let travel of travels" class="travel-card">
+    <h3>Travel ID: {{ travel.travelId }}</h3>
+    <p>User: {{ travel.user?.userName }}</p>
+    <p>Tickets: {{ travel.amountTickets }}</p>
+    <p>Country: {{ travel.flight?.country?.country }}</p>
+
+    <span *ngIf="travel.isPast" class="past-flight">
+      ✈️ This flight has already passed.
+    </span>
+
+    <p>Status:
+      <span [ngClass]="{
+        'status': true, 
+        'approved': travel.status === 'approved', 
+        'rejected': travel.status === 'rejected'
+      }">
+        {{ travel.status || 'Pending' }}
+      </span>
+    </p>
+  </div>
+</div>

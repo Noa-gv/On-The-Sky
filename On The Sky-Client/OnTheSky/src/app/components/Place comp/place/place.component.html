@@ -1,0 +1,50 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+
+<h2>Destinations</h2>
+
+<!-- שורת חיפוש למשתמש רגיל -->
+<div *ngIf="!isManager" style="margin-bottom: 10px;">
+  <input
+    type="text"
+    [(ngModel)]="searchText"
+    (input)="onSearchChange()"
+    placeholder="Search country..."
+  />
+</div>
+
+<!-- תצוגת רשימה -->
+<ul>
+  <li *ngFor="let place of (isManager ? places : filteredPlaces)">
+    {{ place.country }}
+    <ng-container *ngIf="isManager">
+      <button (click)="startEdit(place)">✏️</button>
+      <button (click)="delete(place.countryid)">🗑️</button>
+    </ng-container>
+  </li>
+</ul>
+
+<!-- טופס למנהל בלבד -->
+<div *ngIf="isManager">
+  <h3>{{ editingId ? 'Edit Place' : 'Add New Place' }}</h3>
+
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <input formControlName="country" placeholder="Country name" />
+    <button type="submit" [disabled]="form.invalid">
+      {{ editingId ? 'Update' : 'Add' }}
+    </button>
+    <button type="button" (click)="cancelEdit()">Cancel</button>
+  </form>
+
+  <ng-container *ngIf="country">
+    <div
+      *ngIf="country.invalid && (country.dirty || country.touched)"
+      style="color:red"
+    >
+      <div *ngIf="country.errors?.['required']">Country is required.</div>
+      <div *ngIf="country.errors?.['minlength']">
+        Minimum 2 characters.
+      </div>
+    </div>
+  </ng-container>
+</div>

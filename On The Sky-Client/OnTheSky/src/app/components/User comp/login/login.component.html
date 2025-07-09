@@ -1,0 +1,30 @@
+<div class="login-container">
+  <h2 class="login-title">✈️ On The Sky</h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <label>user name:</label>
+    <input type="text" [(ngModel)]="userName" name="userName" required />
+
+    <label>password:</label>
+    <input type="password" [(ngModel)]="password" name="password" required />
+
+    <button type="submit">Sigh in</button>
+
+    <div *ngIf="error" class="error-message">
+      {{ error }}
+    </div>
+  </form>
+</div>
+
+<p class="register-link">
+ new here? <a routerLink="/register">Click to register</a>
+</p>
+
+<!-- תמונת מטוס שמופיעה רק כשאנחנו באנימציה -->
+<img
+  *ngIf="isPlaneFlying"
+  src="assets/icons8-plane-16.png"
+  alt="Flying Plane"
+  appFlyPlane
+  (animationDone)="onAnimationDone()"
+/>

@@ -1,0 +1,109 @@
+.login-container {
+  direction: rtl;
+  max-width: 350px;
+  margin: 80px auto;
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  background-color: #fdfdfd;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.login-title {
+  font-size: 28px;
+  margin-bottom: 25px;
+  color: #1976d2;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+form {
+  text-align: right;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1565c0;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.plane {
+  position: fixed;
+  top: 20%;
+  left: -100px;
+  width: 100px;
+  height: auto;
+  animation: flyRight 2s linear forwards;
+  z-index: 1000;
+}
+
+@keyframes flyRight {
+  from {
+    left: -100px;
+  }
+  to {
+    left: 100vw;
+  }
+}
+
+.register-link {
+  margin-top: 30px;
+  font-size: 18px;
+  color: #1a237e;
+  text-align: center;
+  font-weight: 600;
+  padding: 15px 10px;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.register-link a {
+  color: #1976d2;
+  font-weight: 700;
+  font-size: 18px;
+  text-decoration: none;
+  margin-left: 6px;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.register-link a:hover {
+  color: #0d47a1;
+  text-decoration: underline;
+}
+
+

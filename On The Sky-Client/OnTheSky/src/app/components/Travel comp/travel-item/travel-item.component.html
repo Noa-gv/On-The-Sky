@@ -1,0 +1,11 @@
+
+<div class="travel-card">
+  <h3>Travel ID {{ travel.travelId }}</h3>
+  <p>User: {{ travel.user?.userName }}</p>
+  <p>Number of Tickets: {{ travel.amountTickets }}</p>
+  <p>Country: {{ travel.flight?.country?.country }}</p>
+  <p>Status: {{ travel.status || 'Pending' }}</p>
+
+  <button (click)="approve.emit(travel)">Approve</button>
+  <button (click)="reject.emit(travel)">Reject</button>
+</div>

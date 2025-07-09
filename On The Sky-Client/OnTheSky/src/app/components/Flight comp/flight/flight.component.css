@@ -1,0 +1,127 @@
+/* כותרת */
+h2 {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 28px;
+  color: #2c3e50; /* כחול כהה */
+}
+
+/* שורת חיפוש */
+input[type="text"] {
+  padding: 8px;
+  width: 300px;
+  max-width: 90%;
+  border: 1.5px solid #b0cfee;
+  border-radius: 5px;
+  display: block;
+  margin: 10px auto;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+/* טבלה */
+table {
+  width: 95%;
+  margin: 0 auto 30px auto;
+  border-collapse: collapse;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+thead {
+  background-color: #3498db; /* כחול ראשי */
+  color: white;
+}
+
+th, td {
+  padding: 12px 10px;
+  text-align: center;
+  border: 1px solid #e0e0e0;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #ecf5fc; /* כחול בהיר */
+}
+
+/* כפתורים */
+button {
+  margin: 0 4px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button[type="submit"] {
+  background-color: #2d98da;
+  color: white;
+}
+
+button[type="button"] {
+  background-color: #7f8c8d;
+  color: white;
+}
+
+button.edit {
+  background-color: #f1c40f;
+  color: black;
+}
+
+button.delete {
+  background-color: #e74c3c;
+  color: white;
+}
+
+/* טופס */
+form {
+  width: 320px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #d6eaf8;
+  background-color: #f8fbff; /* רקע כחול בהיר מאוד */
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+form label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+form input {
+  width: 100%;
+  padding: 8px;
+  border: 1.5px solid #b0cfee;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+form input:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+form button {
+  margin-top: 12px;
+  width: 48%;
+}
+
+.pretty-date {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  color: #2c3e50;
+}

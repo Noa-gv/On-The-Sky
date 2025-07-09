@@ -1,0 +1,116 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+
+<h2>Flights</h2>
+
+<!-- שורת חיפוש למשתמש רגיל -->
+<div *ngIf="!isManager" style="margin-bottom: 10px;">
+  <input type="text" [(ngModel)]="searchText" (input)="onSearchChange()" placeholder="Search by country or date..." />
+</div>
+
+<!-- תצוגת רשימה -->
+<table>
+  <thead>
+    <tr>
+      <th>Flight ID</th>
+      <th>Flight Time</th>
+      <th>Country</th>
+      <th>Max Seats</th>
+      <th>Booked Seats</th>
+      <th>Price</th>
+      <th *ngIf="isManager">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let flight of (isManager ? flights : filteredFlights)">
+      <td>{{ flight.flightid }}</td>
+      <td><span class="pretty-date">{{ flight.flighttime | prettyDate }}</span></td>
+      <td>{{ flight.country?.country }}</td>
+      <td>{{ flight.maximum }}</td>
+      <td>{{ flight.amount }}</td>
+      <td>{{ flight.price | currency: 'ILS' }}</td>
+      <td *ngIf="isManager">
+        <ng-container *ngIf="!isFlightPassed(flight); else flightPassed">
+          <button class="edit" (click)="startEdit(flight)">✏️</button>
+          <button class="delete" (click)="delete(flight.flightid)">🗑️</button>
+        </ng-container>
+        <ng-template #flightPassed>
+          <span>Flight passed</span>
+        </ng-template>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- טופס למנהל בלבד עם טיפול בשגיאות-->
+<div *ngIf="isManager" style="margin-top: 20px;">
+  <h3>{{ editingId ? 'Edit Flight' : 'Add New Flight' }}</h3>
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <!-- Flight Time -->
+    <label>
+      Flight Time:
+      <input type="datetime-local" formControlName="flighttime" />
+    </label>
+    <div class="error" *ngIf="flighttime?.touched && flighttime?.invalid">
+      <div *ngIf="flighttime?.errors?.['required']">Flight time is required.</div>
+      <div *ngIf="flighttime?.errors?.['pastDate']">Flight time cannot be in the past.</div>
+    </div>
+    <br />
+
+    <!-- Country -->
+    <label>
+      Country:
+      <select formControlName="countryID">
+        <option *ngFor="let place of places" [value]="place.countryid">
+          {{ place.country }}
+        </option>
+      </select>
+    </label>
+    <div class="error" *ngIf="countryID?.touched && countryID?.invalid">
+      <div *ngIf="countryID?.errors?.['required']">Country is required.</div>
+    </div>
+    <br />
+
+    <!-- Max Seats -->
+    <label>
+      Max Seats:
+      <input type="number" formControlName="maximum" />
+    </label>
+    <div class="error" *ngIf="maximum?.touched && maximum?.invalid">
+      <div *ngIf="maximum?.errors?.['required']">Maximum number of seats is required.</div>
+      <div *ngIf="maximum?.errors?.['min']">Maximum must be at least 1.</div>
+    </div>
+    <br />
+
+    <!-- Amount -->
+    <label>
+      Booked Seats:
+      <input type="number" formControlName="amount" />
+    </label>
+    <div class="error" *ngIf="amount?.touched && amount?.invalid">
+      <div *ngIf="amount?.errors?.['required']">Booked seats is required.</div>
+      <div *ngIf="amount?.errors?.['min']">Booked seats cannot be negative.</div>
+    </div>
+    <div class="error" *ngIf="form.errors?.['amountTooHigh'] && amount?.touched">
+      Booked seats cannot exceed the maximum number of seats.
+    </div>
+    <br />
+
+    <!-- Price -->
+    <label>
+      Price:
+      <input type="number" formControlName="price" />
+    </label>
+    <div class="error" *ngIf="price?.touched && price?.invalid">
+      <div *ngIf="price?.errors?.['required']">Price is required.</div>
+      <div *ngIf="price?.errors?.['min']">Price cannot be negative.</div>
+    </div>
+    <br />
+
+    <!-- כפתורים -->
+    <button type="submit" [disabled]="form.invalid">
+      {{ editingId ? 'Update' : 'Add' }}
+    </button>
+    <button type="button" (click)="cancelEdit()">Cancel</button>
+  </form>
+</div>

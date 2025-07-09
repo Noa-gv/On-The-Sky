@@ -1,0 +1,89 @@
+.order-form {
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid #d0e6f7;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.05);
+}
+
+.order-form select,
+.order-form input {
+  padding: 8px 10px;
+  font-size: 1rem;
+  border: 1px solid #bcdff8;
+  border-radius: 4px;
+  background-color: #f5faff;
+  color: #003f73;
+}
+
+.order-form select:focus,
+.order-form input:focus {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.buttons button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.buttons button:hover {
+  background-color: #005dc1;
+}
+
+.travel-list {
+  list-style: none;
+  padding: 0;
+  max-width: 600px;
+  margin: 30px auto 0;
+}
+
+.travel-item {
+  border: 1px solid #cce5ff;
+  padding: 12px 16px;
+  margin-top: 10px;
+  border-radius: 6px;
+  background-color: #f0f8ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #003f73;
+}
+
+.travel-item button {
+  margin-left: 8px;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #17a2b8;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.travel-item button:hover {
+  background-color: #117a8b;
+}
+
+.info-message {
+  text-align: center;
+  color: #555;
+  margin-top: 20px;
+  font-style: italic;
+}
