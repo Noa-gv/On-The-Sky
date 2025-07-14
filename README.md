@@ -19,15 +19,18 @@ The project consists of a **client-side built in Angular** and a **server-side b
 ## 🖥️ Client-Side (Angular)
 
 - Developed using **Angular**
-- Login and registration forms with field validations
-- Flight list view available to all logged-in users
-- Flight booking form (Travel) allowing users to select a flight and enter details
+- Login and registration forms with input validation
+- Flight list view available to all logged-in users:
+  - Flights are grouped and displayed by **country**
+  - Users can filter/search flights by country name
+- Flight booking form (Travel) allowing users to select a flight and enter personal details
 - Admin-only features:
-  - Flight management page (Full CRUD)
-  - Booking management with approval/decline/extension functionality
-- Uses Angular `HttpClient` to communicate with the backend
-- Routing based on user role (`Role`)
-- Styled with CSS and Tailwind for responsive and clean UI
+  - **Flight management** page (Full CRUD) – including assignment to countries
+  - **Booking management** – approve, decline, or extend existing bookings
+- Uses Angular `HttpClient` to communicate with the ASP.NET Core backend via RESTful APIs
+- Routing and access control based on user role (`User` / `Admin`)
+- Data models (interfaces) for `User`, `Flight`, `Travel`, and `Country`
+- Styled with CSS and optionally Tailwind for a responsive, clean UI
 
 ---
 
@@ -36,20 +39,40 @@ The project consists of a **client-side built in Angular** and a **server-side b
 - Built using **ASP.NET Core Web API**
 - Uses **Entity Framework Core** for data access and database interactions
 - Main models:
-  - `User`: `Id`, `UserName`, `Password`, `Role` (enum)
-  - `Flight`: destination, date, price, etc.
-  - `Travel`: represents a flight booking by a user
-- DTOs used to transfer only necessary data via API
+  - `User`: Represents the application user with `Id`, `UserName`, `Password`, and `Role` (User/Admin)
+  - `Flight`: Represents a flight with fields like `Id`, `Date`, `Price`, and a link to a country
+  - `Travel`: Represents a booking made by a user for a flight
+  - `Country` (formerly `Places`): Represents a country with:
+    - `countryid`: Primary key
+    - `country`: Country name (e.g., "France", "USA")
+    - `flight_list`: A list of all flights associated with that country
+- Entity relationships:
+  - One `Country` has many `Flights`
+  - One `Flight` belongs to one `Country`
+  - One `Travel` is linked to one `Flight` and one `User`
+
+- DTOs used to transfer only the necessary data via API
 - Controllers:
-  - `AuthController` – handles login and registration
-  - `FlightController` – manages flight data
-  - `TravelController` – handles flight bookings
-- Configured with CORS and ready for JWT integration if needed
+  - `AuthController` – Handles user registration and login
+  - `FlightController` – Handles CRUD operations for flights
+  - `TravelController` – Handles creation and management of bookings
+  - (Optional) `CountryController` – Can be added to manage/view countries
+- Configured with CORS and ready for JWT authentication if needed
 
 ---
 
 ## 🗂️ Project Structure
-OnTheSky/
+ OnTheSky/
 ├── OnTheSky-Client/       # Angular frontend application
 └── OnTheSky-Server/       # ASP.NET Core backend API
 
+## 🚀 Getting Started
+
+### Server (ASP.NET Core)
+cd OnTheSky-Server
+dotnet restore
+dotnet run
+### Client (Angular)
+cd OnTheSky-Client/OnTheSky
+npm install
+ng serve
