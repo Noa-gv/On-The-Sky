@@ -63,16 +63,16 @@ The project consists of a **client-side built in Angular** and a **server-side b
 
 ## 🗂️ Project Structure
  OnTheSky/
-├── OnTheSky-Client/       # Angular frontend application
-└── OnTheSky-Server/       # ASP.NET Core backend API
+  ├── OnTheSky-Client/       # Angular frontend application  
+  └── OnTheSky-Server/       # ASP.NET Core backend API
 
 ## 🚀 Getting Started
 
 ### Server (ASP.NET Core)
-cd OnTheSky-Server
-dotnet restore
-dotnet run
+cd OnTheSky-Server  
+dotnet restore  
+dotnet run  
 ### Client (Angular)
-cd OnTheSky-Client/OnTheSky
-npm install
-ng serve
+cd OnTheSky-Client/OnTheSky  
+npm install  
+ng serve  
