@@ -16,6 +16,13 @@ The project consists of a **client-side built in Angular** and a **server-side b
 
 ---
 
+## 🗂️ Project Structure
+ OnTheSky/  
+      ├── OnTheSky-Client/       # Angular frontend application  
+      └── OnTheSky-Server/       # ASP.NET Core backend API
+
+---
+
 ## 🖥️ Client-Side (Angular)
 
 - Developed using **Angular**
@@ -60,11 +67,6 @@ The project consists of a **client-side built in Angular** and a **server-side b
 - Configured with CORS and ready for JWT authentication if needed
 
 ---
-
-## 🗂️ Project Structure
- OnTheSky/  
-      ├── OnTheSky-Client/       # Angular frontend application  
-      └── OnTheSky-Server/       # ASP.NET Core backend API
 
 ## 🚀 Getting Started
 
